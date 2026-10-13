@@ -3,7 +3,7 @@ package proto_test
 import (
 	"bytes"
 	"encoding"
-	"io/ioutil"
+	"io"
 	"testing"
 	"time"
 
@@ -76,7 +76,7 @@ var _ = Describe("WriteBuffer", func() {
 })
 
 func BenchmarkWriteBuffer_Append(b *testing.B) {
-	buf := proto.NewWriter(ioutil.Discard)
+	buf := proto.NewWriter(io.Discard)
 	args := []interface{}{"hello", "world", "foo", "bar"}
 
 	for i := 0; i < b.N; i++ {
